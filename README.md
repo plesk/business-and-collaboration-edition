@@ -17,7 +17,7 @@ Here at Plesk we strive to Simpify the Lives of Web Professionals. This includes
  
 ## Deploying Plesk with WordPress Server Cookbook
 
-1. Install one of the supported Linux Operating Systems ( https://docs.plesk.com/release-notes/onyx/hardware-requirements ) following hardware specs ( https://docs.plesk.com/release-notes/onyx/hardware-requirements/ )
+1. Install one of the supported Linux Operating Systems ( currently RHEL7, CentOS7, and Debian Jessy) with following hardware specs ( https://docs.plesk.com/release-notes/onyx/hardware-requirements/ )
 
 2. Shell to server as root
 
