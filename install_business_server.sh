@@ -171,6 +171,11 @@ echo
 echo "Installing Migration Manager"
 plesk bin extension --install-url https://ext.plesk.com/packages/bebc4866-d171-45fb-91a6-4b139b8c9a1b-panel-migrator/download 
 echo
+echo "Installing Welcome Extension"
+plesk bin extension --install-url https://github.com/plesk/business-server/raw/master/ext-welcome-business_v1.0.0-2.zip 
+echo
+
+
 
 # Prepair for Cloning
 
