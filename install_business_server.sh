@@ -6,11 +6,11 @@
 
 # Edit variables for Plesk pre-configuration
 
-hostname='cp.domain.tst'
-email='admin@test.tst'
+hostname='ec2-52-57-85-224.eu-central-1.compute.amazonaws.com'  #'cp.domain.tst'
+email='lucas@plesk.com'   #'admin@test.tst'
 passwd='CookBook123'
-name='admin'
-company='Plesk Sample Company'
+name='lucas'   #'admin'
+company='TestPlesk'   #'Plesk Sample Company'
 phone='123-123-1234'
 address='123_street'
 city='NY'
@@ -22,7 +22,7 @@ ip_type=shared
 
 # Plesk Activation Code - provide proper license for initialization, it will be replaced after cloning
 # leave as null if not providing key
-activation_key=
+activation_key=A00C00-SCSG04-6S2074-0NGK62-MASA52
 
 # Plesk UI View - can be set to Service Provider View (spv) or Power User View (puv)
 plesk_ui=spv
@@ -69,14 +69,14 @@ echo
 # Install Plesk with Required Components
 
 echo "Starting Plesk Installation"
-./plesk-installer install plesk --preset Full --with panel bind fail2ban l10n pmm mysqlgroup roundcube kav spamassassin selinux postfix dovecot proftpd awstats modsecurity mod_fcgid webservers php7.1 php5.6 config-troubleshooter psa-firewall cloudflare heavy-metal-skin wp-toolkit security-advisor letsencrypt
+./plesk-installer install plesk --preset Full --with panel bind fail2ban l10n pmm mysqlgroup roundcube kav spamassassin postfix dovecot proftpd awstats modsecurity mod_fcgid webservers php7.2 php7.1 php5.6 config-troubleshooter psa-firewall heavy-metal-skin letsencrypt 
 echo
 echo
 
 # Initalize Plesk before Additional Configuration
 # https://docs.plesk.com/en-US/onyx/cli-linux/using-command-line-utilities/init_conf-server-configuration.37843/
 
-echo "Starting initialization process of your Plesk server"
+echo "Starting initialization process of your new Plesk Business server"
 plesk bin init_conf --init -email $email -passwd $passwd -company $company -name $name -phone $phone -address $address -city $city -state $state -zip $zip -country $country -license_agreed $agreement -ip-type $ip_type
 echo
 
@@ -159,20 +159,37 @@ fi
 # https://docs.plesk.com/en-US/onyx/cli-linux/using-command-line-utilities/extension-extensions.71031/
 
 echo "Installing Requested Plesk Extensions"
-echo "Installing Route 53"
-plesk bin extension --install-url https://ext.plesk.com/packages/ed1860ee-45c5-4e2b-b6b7-44e5da69dca5-route53/download
+echo "Installing WordPress Toolkit"
+plesk bin extension --install-url https://ext.plesk.com/packages/00d002a7-3252-4996-8a08-aa1c89cf29f7-wp-toolkit/download
+echo "Installing SEO Toolkit"
+plesk bin extension --install-url https://ext.plesk.com/packages/2ae9cd0b-bc5c-4464-a12d-bd882c651392-xovi/download
 echo
-echo "Installing Security Advisor"
-plesk bin extension --install-url https://ext.plesk.com/packages/6bcc01cf-d7bb-4e6a-9db8-dd1826dcad8f-security-advisor/download
+echo "Installing Advisor"
+plesk bin extension --install-url https://ext.plesk.com/packages/bbf16bc7-094e-4cb3-8b9c-32066fc66561-advisor/download
+echo
+echo "Installing BoldGrid"
+plesk bin extension --install-url https://ext.plesk.com/packages/e4736f87-ba7e-4601-a403-7c82682ef07d-boldgrid/download
+echo
+echo "Installing Acronis Backup"
+plesk bin extension --install-url https://ext.plesk.com/packages/93b3b2a8-bd56-4371-8ab9-63c604efab56-acronis-backup/download
+echo
+echo "Installing Revisium Antivirus"
+plesk bin extension --install-url https://ext.plesk.com/packages/b71916cf-614e-4b11-9644-a5fe82060aaf-revisium-antivirus/download
+echo
+echo "Installing Backup to Cloud Pro"
+plesk bin extension --install-url https://ext.plesk.com/packages/9f3b75b3-d04d-44fe-a8fa-7e2b1635c2e1-dropbox-backup/download
+plesk bin extension --install-url https://ext.plesk.com/packages/52fd6315-22a4-48b8-959d-b2f1fd737d11-google-drive-backup/download
+plesk bin extension --install-url https://ext.plesk.com/packages/8762049b-870e-47cb-ba14-9f055b99b508-s3-backup/download
+plesk bin extension --install-url https://ext.plesk.com/packages/a8e5ad9c-a254-4bcf-8ae4-5440f13a88ad-one-drive-backup/download
 echo
 echo "Installing Pagespeed Insights"
 plesk bin extension --install-url https://ext.plesk.com/packages/3d2639e6-64a9-43fe-a990-c873b6b3ec66-pagespeed-insights/download
 echo
-echo "Installing Kolab"
-plesk bin extension --install-url https://ext.plesk.com/packages/bdc94ad6-cc46-4f5a-8ee7-76675fc3cc44-kolab/download
+echo "Installing Uptime Robot"
+plesk bin extension --install-url https://ext.plesk.com/packages/7d37cfde-f133-4085-91ea-d5399862321b-uptime-robot/download
 echo
-echo "Installing Magicspam"
-plesk bin extension --install-url https://ext.plesk.com/packages/b49f9b1b-e8cf-41e1-bd59-4509d92891f7-magicspam/download
+echo "Installing Plesk Premium Email powered by Kolab"
+plesk bin extension --install-url https://ext.plesk.com/packages/bdc94ad6-cc46-4f5a-8ee7-76675fc3cc44-kolab/download
 echo
 echo "Installing LetsEncrypt"
 plesk bin extension --install-url https://ext.plesk.com/packages/f6847e61-33a7-4104-8dc9-d26a0183a8dd-letsencrypt/download
@@ -193,6 +210,7 @@ if [ "$clone" = "on" ]; then
 	plesk bin cloning --update -prepare-public-image true
 	echo "Plesk initialization will be wiped on next boot. Ready for Cloning."
 fi
+plesk bin settings --set solution_type="business"
 
 echo
 echo "Your Plesk Business Server image is complete."
