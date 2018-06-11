@@ -36,7 +36,7 @@ echo 'Please provide a proper Plesk Activation Code (Bundle License).'
   exit 1
 fi
 
-if [[ -z $hostname || -z $email || -z $passwd || -z $name || -z $company || -z $phone || -z $address || -z $city || -z $state || -z $zip || -z $country || -z $agreement || -z $ip_type ]]; then
+if [[ -z $hostname || -z $email || -z $passwd || -z $name || -z $agreement || -z $ip_type ]]; then
   echo 'One or more variables are undefined. Please check your initialization values.'
   exit 1
 fi
