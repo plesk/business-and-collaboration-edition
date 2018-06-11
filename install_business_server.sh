@@ -155,6 +155,7 @@ fi
 echo "Installing Requested Plesk Extensions"
 echo "Installing WordPress Toolkit"
 plesk bin extension --install-url https://ext.plesk.com/packages/00d002a7-3252-4996-8a08-aa1c89cf29f7-wp-toolkit/download
+echo
 echo "Installing SEO Toolkit"
 plesk bin extension --install-url https://ext.plesk.com/packages/2ae9cd0b-bc5c-4464-a12d-bd882c651392-xovi/download
 echo
