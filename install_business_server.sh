@@ -6,23 +6,16 @@
 
 # Edit variables for Plesk pre-configuration
 
-hostname='ec2-52-57-85-224.eu-central-1.compute.amazonaws.com'  #'cp.domain.tst'
-email='lucas@plesk.com'   #'admin@test.tst'
+hostname='cp.domain.tst'
+email='admin@test.tst'
 passwd='CookBook123'
-name='lucas'   #'admin'
-company='TestPlesk'   #'Plesk Sample Company'
-phone='123-123-1234'
-address='123_street'
-city='NY'
-state='NY'
-zip='12345'
-country='US'
+name='admin'
 agreement=true
 ip_type=shared
 
 # Plesk Activation Code - provide proper license for initialization, it will be replaced after cloning
 # leave as null if not providing key
-activation_key=A00C00-SCSG04-6S2074-0NGK62-MASA52
+activation_key=$1
 
 # Plesk UI View - can be set to Service Provider View (spv) or Power User View (puv)
 plesk_ui=spv
@@ -34,7 +27,7 @@ fail2ban=yes
 http2=yes
 
 # Turn on Cloning - Set to "on" if this it to make a Golden Image, set to "off" if for remote installation
-clone=on
+clone=off
 
 # Test to make sure all initialization values are set
 
@@ -69,7 +62,7 @@ echo
 # Install Plesk with Required Components
 
 echo "Starting Plesk Installation"
-./plesk-installer install plesk --preset Full --with panel bind fail2ban l10n pmm mysqlgroup roundcube kav spamassassin postfix dovecot proftpd awstats modsecurity mod_fcgid webservers php7.2 php7.1 php5.6 config-troubleshooter psa-firewall heavy-metal-skin letsencrypt 
+./plesk-installer install plesk --preset Recommended --with panel bind fail2ban l10n pmm mysqlgroup roundcube kav spamassassin postfix dovecot proftpd awstats modsecurity mod_fcgid webservers php7.2 php7.1 config-troubleshooter psa-firewall heavy-metal-skin letsencrypt 
 echo
 echo
 
@@ -77,7 +70,8 @@ echo
 # https://docs.plesk.com/en-US/onyx/cli-linux/using-command-line-utilities/init_conf-server-configuration.37843/
 
 echo "Starting initialization process of your new Plesk Business server"
-plesk bin init_conf --init -email $email -passwd $passwd -company $company -name $name -phone $phone -address $address -city $city -state $state -zip $zip -country $country -license_agreed $agreement -ip-type $ip_type
+plesk bin init_conf --init -email $email -passwd $passwd -hostname $hostname -license_agreed $agreement -ip-type $ip_type
+plesk bin settings --set solution_type="business"
 echo
 
 # Install Plesk Activation Key if provided
@@ -198,7 +192,7 @@ echo "Installing Migration Manager"
 plesk bin extension --install-url https://ext.plesk.com/packages/bebc4866-d171-45fb-91a6-4b139b8c9a1b-panel-migrator/download
 echo
 echo "Installing Welcome Extension"
-plesk bin extension --install-url https://github.com/plesk/ext-welcome-business/releases/download/v1.0.1/ext-welcome-business_v1.0.1-3.zip
+plesk bin extension --install-url https://github.com/plesk/ext-welcome-business/releases/download/v1.0.2/ext-welcome-business_v1.0.2-4.zip
 echo
 
 
@@ -209,8 +203,11 @@ if [ "$clone" = "on" ]; then
 	echo "Setting Plesk Cloning feature."
 	plesk bin cloning --update -prepare-public-image true
 	echo "Plesk initialization will be wiped on next boot. Ready for Cloning."
+else
+  echo "Here is your login"
+  plesk login
 fi
-plesk bin settings --set solution_type="business"
+
 
 echo
 echo "Your Plesk Business Server image is complete."
