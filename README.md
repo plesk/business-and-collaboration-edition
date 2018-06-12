@@ -17,7 +17,7 @@ Here at Plesk we strive to Simpify the Lives of Web Professionals. This includes
 
  or
 
- * A Plesk license with the [Business Solution Feature Pack](https://ext.plesk.com/packages/63d4feb8-b756-4c64-a99d-c9be0e1ce982-offer-business-feature-pack#!)
+ * A Plesk license with the [Business Solution Feature Pack](https://ext.plesk.com/packages/63d4feb8-b756-4c64-a99d-c9be0e1ce982-offer-business-feature-pack)
  
 ## Deploying Plesk with WordPress Server Cookbook
 
