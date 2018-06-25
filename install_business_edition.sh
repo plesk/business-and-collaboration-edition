@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ################################################################################
-##          Installation script for Plesk Business Server                     ##
+##      Installation script for Plesk Business & Collaboration Edition        ##
 ################################################################################
 
 # Edit variables for Plesk pre-configuration
@@ -27,7 +27,7 @@ fail2ban=yes
 http2=yes
 
 # Turn on Cloning - Set to "on" if this it to make a Golden Image, set to "off" if for remote installation
-clone=off
+clone=on
 
 # Test to make sure all initialization values are set
 
@@ -36,7 +36,7 @@ echo 'Please provide a proper Plesk Activation Code (Bundle License).'
   exit 1
 fi
 
-if [[ -z $hostname || -z $email || -z $passwd || -z $name || -z $agreement || -z $ip_type ]]; then
+if [[ -z $hostname || -z $email || -z $passwd || -z $name || -z $company || -z $phone || -z $address || -z $city || -z $state || -z $zip || -z $country || -z $agreement || -z $ip_type ]]; then
   echo 'One or more variables are undefined. Please check your initialization values.'
   exit 1
 fi
@@ -69,9 +69,9 @@ echo
 # Initalize Plesk before Additional Configuration
 # https://docs.plesk.com/en-US/onyx/cli-linux/using-command-line-utilities/init_conf-server-configuration.37843/
 
-echo "Starting initialization process of your new Plesk Business server"
-plesk bin init_conf --init -email $email -passwd $passwd -hostname $hostname -license_agreed $agreement -ip-type $ip_type
-plesk bin settings --set solution_type="business"
+echo "Starting initialization process of your new Plesk Business & Collaboration Edition"
+plesk bin init_conf --init -email $email -passwd $passwd -company $company -name $name -phone $phone -address $address -city $city -state $state -zip $zip -country $country -license_agreed $agreement -ip-type $ip_type
+plesk bin settings --set solution_type="wordpress"
 echo
 
 # Install Plesk Activation Key if provided
@@ -155,7 +155,6 @@ fi
 echo "Installing Requested Plesk Extensions"
 echo "Installing WordPress Toolkit"
 plesk bin extension --install-url https://ext.plesk.com/packages/00d002a7-3252-4996-8a08-aa1c89cf29f7-wp-toolkit/download
-echo
 echo "Installing SEO Toolkit"
 plesk bin extension --install-url https://ext.plesk.com/packages/2ae9cd0b-bc5c-4464-a12d-bd882c651392-xovi/download
 echo
@@ -193,7 +192,7 @@ echo "Installing Migration Manager"
 plesk bin extension --install-url https://ext.plesk.com/packages/bebc4866-d171-45fb-91a6-4b139b8c9a1b-panel-migrator/download
 echo
 echo "Installing Welcome Extension"
-plesk bin extension --install-url https://github.com/plesk/ext-welcome-business/releases/download/v1.0.2/ext-welcome-business_v1.0.2-4.zip
+plesk bin extension --install-url https://github.com/plesk/ext-welcome-business/releases/download/v1.0.1/ext-welcome-business_v1.0.1-3.zip
 echo
 
 
@@ -211,7 +210,7 @@ fi
 
 
 echo
-echo "Your Plesk Business Server image is complete."
-echo "Thank you for using the Business Server Cookbook"
+echo "Your Plesk Business & Collaboration image is complete."
+echo "Thank you for using the Plesk Business & Collaboration Cookbook"
 echo
 echo
