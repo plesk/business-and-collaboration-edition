@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ################################################################################
-##          Installation script for Plesk Business Server                     ##
+##          Installation script for Plesk Business & Collaboration Edition    ##
 ################################################################################
 
 # Edit variables for Plesk pre-configuration
@@ -69,7 +69,7 @@ echo
 # Initalize Plesk before Additional Configuration
 # https://docs.plesk.com/en-US/onyx/cli-linux/using-command-line-utilities/init_conf-server-configuration.37843/
 
-echo "Starting initialization process of your new Plesk Business server"
+echo "Starting initialization process of your new Plesk Business & Collaboration Edition"
 plesk bin init_conf --init -email $email -passwd $passwd -hostname $hostname -license_agreed $agreement -ip-type $ip_type
 plesk bin settings --set solution_type="business"
 echo
@@ -211,7 +211,7 @@ fi
 
 
 echo
-echo "Your Plesk Business Server image is complete."
-echo "Thank you for using the Business Server Cookbook"
+echo "Your Plesk Business & Collaboration Edition image is complete."
+echo "Thank you for using the Business  & Collaboration Edition Cookbook"
 echo
 echo
