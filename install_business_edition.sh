@@ -193,9 +193,13 @@ echo "Installing Migration Manager"
 plesk bin extension --install-url https://ext.plesk.com/packages/bebc4866-d171-45fb-91a6-4b139b8c9a1b-panel-migrator/download
 echo
 echo "Installing Welcome Extension"
-plesk bin extension --install-url https://github.com/plesk/ext-welcome-business/releases/download/v1.0.2/ext-welcome-business_v1.0.2-4.zip
+plesk bin extension --install-url https://ext.plesk.com/packages/39eb8f3d-0d9a-4605-a42a-c37ca5809415-welcome/download
 echo
 
+
+echo "Enabling Welcome Guide for the Plesk Business & Collaboration Edition"
+plesk ext welcome --select -preset business
+echo 
 
 # Prepare for Cloning
 # https://docs.plesk.com/en-US/onyx/cli-linux/using-command-line-utilities/cloning-server-cloning-settings.71035/
