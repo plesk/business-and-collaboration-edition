@@ -4,7 +4,7 @@
 
 This repository contains all you need to build and customize your personal preconfigured Business & Collaboration Edition with Plesk. The included whitepaper describes the solution in detail and highlights why you should offer it to your customers.
 
-![](https://raw.githubusercontent.com/plesk/ext-welcome-business/master/_meta/screenshots/1.png)
+![](https://raw.githubusercontent.com/plesk/ext-welcome-guide/master/src/_meta/screenshots/1.png)
 
 ## Description
 
