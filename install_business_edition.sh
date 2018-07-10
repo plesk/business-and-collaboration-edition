@@ -197,6 +197,10 @@ plesk bin extension --install-url https://github.com/plesk/ext-welcome-business/
 echo
 
 
+echo "Enabling Welcome Guide for the Plesk Business & Collaboration Edition"
+plesk ext welcome --select -preset business
+echo 
+
 # Prepare for Cloning
 # https://docs.plesk.com/en-US/onyx/cli-linux/using-command-line-utilities/cloning-server-cloning-settings.71035/
 
