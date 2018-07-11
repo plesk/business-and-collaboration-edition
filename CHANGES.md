@@ -1,3 +1,6 @@
+# 1.2.1
+* [*] Fixed bug with plesk_ui
+
 # 1.2
 * [*] Replaced old Welcome Extension with the new Welcome Guide
 

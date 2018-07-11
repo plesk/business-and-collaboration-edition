@@ -85,7 +85,7 @@ fi
 
 # Configure Service Provider View On
 
-if [ "$plesk_ui" = "spv" ]; then
+if [ "${plesk_ui}" = "spv" ]; then
     echo "Setting to Service Provider View"
     plesk bin poweruser --off
     echo
