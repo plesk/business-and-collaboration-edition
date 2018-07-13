@@ -192,13 +192,12 @@ echo
 echo "Installing Migration Manager"
 plesk bin extension --install-url https://ext.plesk.com/packages/bebc4866-d171-45fb-91a6-4b139b8c9a1b-panel-migrator/download
 echo
-echo "Installing DomainConnect"
+echo "Installing Domain Connect"
 plesk bin extension --install-url https://ext.plesk.com/packages/3a36f828-e477-4600-be33-48c21e351c9a-domain-connect/download
 echo
 echo "Installing Welcome Extension"
 plesk bin extension --install-url https://ext.plesk.com/packages/39eb8f3d-0d9a-4605-a42a-c37ca5809415-welcome/download
 echo
-
 
 echo "Enabling Welcome Guide for the Plesk Business & Collaboration Edition"
 plesk ext welcome --select -preset business
@@ -216,9 +215,7 @@ else
   plesk login
 fi
 
-
 echo
 echo "Your Plesk Business & Collaboration Edition image is complete."
 echo "Thank you for using the Business  & Collaboration Edition Cookbook"
-echo
 echo
