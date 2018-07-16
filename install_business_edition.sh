@@ -124,7 +124,7 @@ echo
 
 if [ "$fail2ban" = "yes" ]; then
   echo "Configuring Fail2Ban and its Jails"
-   plesk bin ip_ban --enable
+  plesk bin ip_ban --enable
   plesk bin ip_ban --enable-jails ssh
   plesk bin ip_ban --enable-jails recidive
   plesk bin ip_ban --enable-jails modsecurity
