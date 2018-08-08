@@ -62,8 +62,12 @@ echo
 
 echo "Starting Plesk Installation"
 ./plesk-installer install plesk --preset Recommended --with fail2ban modsecurity spamassassin mailman psa-firewall pmm health-monitor kav
-echo
-echo
+OUT=$?
+if [ $OUT -ne 0 ];then
+  echo
+  echo "An error occurred! The installation of Plesk failed. Please see logged lines above for error handling!"
+  exit 1
+fi
 
 # Initalize Plesk before Additional Configuration
 # https://docs.plesk.com/en-US/onyx/cli-linux/using-command-line-utilities/init_conf-server-configuration.37843/
@@ -124,7 +128,7 @@ echo
 
 if [ "$fail2ban" = "yes" ]; then
   echo "Configuring Fail2Ban and its Jails"
-  plesk bin ip_ban --enable
+   plesk bin ip_ban --enable
   plesk bin ip_ban --enable-jails ssh
   plesk bin ip_ban --enable-jails recidive
   plesk bin ip_ban --enable-jails modsecurity
