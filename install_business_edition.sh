@@ -194,6 +194,9 @@ echo
 echo "Installing Welcome Extension"
 plesk bin extension --install-url https://ext.plesk.com/packages/39eb8f3d-0d9a-4605-a42a-c37ca5809415-welcome/download
 echo
+echo "Installing Site Import"
+plesk bin extension --instal-url https://ext.plesk.com/packages/01878006-3c3e-4ed6-a7df-37e3741708a2-site-import/download
+echo
 
 echo "Enabling Welcome Guide for the Plesk Business & Collaboration Edition"
 plesk ext welcome --select -preset business
