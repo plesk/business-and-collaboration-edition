@@ -17,7 +17,7 @@ agreement=true
 activation_key=$1
 
 # Plesk UI View - can be set to Service Provider View (spv) or Power User View (puv)
-plesk_ui=spv
+plesk_ui=puv
 
 # Turn on Fail2Ban, yes or no, Keep in mind you need to provide temp license for initialization for this to work
 fail2ban=yes
@@ -118,10 +118,9 @@ echo
 
 # Enable Modsecurity
 # https://docs.plesk.com/en-US/onyx/administrator-guide/server-administration/web-application-firewall-modsecurity.73383/
-
-echo "Turning on Modsecurity WAF Rules"
-plesk bin server_pref --update-web-app-firewall -waf-rule-engine on -waf-rule-set tortix -waf-rule-set-update-period daily -waf-config-preset tradeoff
-echo
+#echo "Turning on Modsecurity WAF Rules"
+#plesk bin server_pref --update-web-app-firewall -waf-rule-engine on -waf-rule-set tortix -waf-rule-set-update-period daily -waf-config-preset tradeoff
+#echo
 
 # Enable Fail2Ban and Jails
 # https://docs.plesk.com/en-US/onyx/cli-linux/using-command-line-utilities/ip_ban-ip-address-banning-fail2ban.73594/
@@ -195,7 +194,7 @@ echo "Installing Welcome Extension"
 plesk bin extension --install-url https://ext.plesk.com/packages/39eb8f3d-0d9a-4605-a42a-c37ca5809415-welcome/download
 echo
 echo "Installing Site Import"
-plesk bin extension --instal-url https://ext.plesk.com/packages/01878006-3c3e-4ed6-a7df-37e3741708a2-site-import/download
+plesk bin extension --install-url https://ext.plesk.com/packages/01878006-3c3e-4ed6-a7df-37e3741708a2-site-import/download
 echo
 
 echo "Enabling Welcome Guide for the Plesk Business & Collaboration Edition"
