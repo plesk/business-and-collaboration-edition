@@ -166,7 +166,7 @@ echo
 echo "Installing Acronis Backup"
 plesk bin extension --install-url https://ext.plesk.com/packages/93b3b2a8-bd56-4371-8ab9-63c604efab56-acronis-backup/download
 echo
-echo "Installing Revisium Antivirus"
+echo "Installing ImunifyAV"
 plesk bin extension --install-url https://ext.plesk.com/packages/b71916cf-614e-4b11-9644-a5fe82060aaf-revisium-antivirus/download
 echo
 echo "Installing Backup to Cloud extensions"
@@ -215,5 +215,5 @@ fi
 
 echo
 echo "Your Plesk Business & Collaboration Edition image is complete."
-echo "Thank you for using the Business  & Collaboration Edition Cookbook"
+echo "Thank you for using the Business & Collaboration Edition Cookbook"
 echo
